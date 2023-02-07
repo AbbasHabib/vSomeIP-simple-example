@@ -24,7 +24,7 @@ $ git checkout tags/2.14.16
 $ mkdir build
 $ cd build
 $ cmake ..
-$ make -j
+$ make
 ```
 ## step3: add vsomeip libs path to .bashrc
 ```bash
