@@ -11,5 +11,7 @@ find_library(vsomeip3_lib vsomeip3
 add_definitions(-DCMAKE_EXPORT_COMPILE_COMMANDS=ON)
 
 add_executable(service-example ./service.cpp)
+add_executable(client-example ./client.cpp)
 
 target_link_libraries(service-example ${vsomeip3_lib} )
+target_link_libraries(client-example ${vsomeip3_lib} )

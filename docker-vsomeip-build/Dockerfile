@@ -1,4 +1,4 @@
-FROM boost_build:v0 as build
+FROM abbas/boost_build:v0 as build
 
 LABEL description="Build vsomeip"
 
