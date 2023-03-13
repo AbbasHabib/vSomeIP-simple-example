@@ -1,6 +1,9 @@
 cmake_minimum_required (VERSION 2.8)
 project(some_ip_test)
-set (CMAKE_CXX_FLAGS "-g -std=c++0x")
+
+SET(CMAKE_CXX_FLAGS "-g -std=c++0x")
+
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
 
 find_package (vsomeip 2.6.0 REQUIRED)
 find_package( Boost 1.55 COMPONENTS system thread log REQUIRED )

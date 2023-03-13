@@ -1,3 +1,25 @@
+# setup using docker
+
+## step1 : setup boost image
+it will take a while
+```bash
+$ cd docker-boost-build
+$ docker build -t boost_build:v0 .
+```
+
+## step2 : setup vsomeip image
+```bash
+$ cd docker-vsomeip-build
+$ docker build -t vsomeip_build:v0 .
+```
+
+## step3 : run test example
+```bash
+$ docker run --rm -it vsomeip_build:v0 bash
+->(docker)$ /example/service-example
+```
+should be good to go :)
+
 # Setting up vsome-ip enviroment with example
 
 ## setp1: vsomeIp requires Boost.asio
@@ -11,7 +33,6 @@ $ tar -xf boost_1_58_0.tar.gz
 $
 $ cd boost_1_58_0/
 $ ./bootstrap.sh --prefix=/usr/
-$ sudo ./b2
 $ sudo ./b2 install
 ```
 
