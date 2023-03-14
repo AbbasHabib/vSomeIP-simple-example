@@ -1,4 +1,4 @@
-FROM abbas/boost_build:v0 as build
+FROM boost_build:v0 as build
 
 LABEL description="Build vsomeip"
 
@@ -20,13 +20,3 @@ RUN cd /tmp/vsomeip; \
 
 # load libraries into linker
 RUN ldconfig
-
-# build example
-COPY ./example/ /example/
-RUN ls /
-RUN ls /example/
-RUN cd /example/; \
-    mkdir build;\
-    cd build; \
-    cmake ..;\
-    make;
