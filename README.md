@@ -1,5 +1,10 @@
 # setup using docker
 
+## step0 : create a custom bridge network
+```
+sudo docker network create --subnet=172.18.0.0/16 vsomeip_bridge
+```
+
 ## step1 : setup boost image
 it will take a while
 ```bash
@@ -13,10 +18,26 @@ $ cd docker-vsomeip-build
 $ docker build -t vsomeip_build:v0 .
 ```
 
-## step3 : run test example
+## step3 : build vsomeip service image
 ```bash
-$ docker run --rm -it vsomeip_build:v0 bash
-->(docker)$ /example/service-example
+$ cd docker-vsomeip-service
+$ docker build -t vsomeip_service:v0 .
+```
+
+## step3 : build vsomeip client image
+```bash
+$ cd docker-vsomeip-client
+$ docker build -t vsomeip_client:v0 .
+```
+
+## run_step1 : run vsomeip service container
+```bash
+$ docker run --net vsomeip_bridge --ip 172.18.0.2 vsomeip_service:v0
+```
+
+## run_step2 : run vsomeip client container
+```bash
+$ docker run --net vsomeip_bridge --ip 172.18.0.3 vsomeip_client:v0
 ```
 should be good to go :)
 
