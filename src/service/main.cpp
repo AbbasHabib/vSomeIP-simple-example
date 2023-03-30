@@ -1,3 +1,9 @@
+#include <chrono>
+#include <condition_variable>
+#include <iomanip>
+#include <iostream>
+#include <sstream>
+#include <thread>
 #include "ServiceManagerAdapter.hpp"
 #include "../sample-ids.hpp"
 
@@ -42,7 +48,7 @@ int main()
 
     if (!vsomeService.init())
     {
-        std::cerr << "Couldn't initialize someip services" << std::endl;
+        std::cerr << "Couldn't initialize vsomeip services" << std::endl;
         return -1;
     }
     vsomeService.start();

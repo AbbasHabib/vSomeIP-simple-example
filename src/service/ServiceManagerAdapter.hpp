@@ -1,13 +1,6 @@
 #ifndef SERVICE_MANAGER_ADAPTER_HPP_
 #define SERVICE_MANAGER_ADAPTER_HPP_
 
-
-#include <chrono>
-#include <condition_variable>
-#include <iomanip>
-#include <iostream>
-#include <sstream>
-#include <thread>
 #include <vsomeip/vsomeip.hpp>
 
 class ServiceManagerAdapter
