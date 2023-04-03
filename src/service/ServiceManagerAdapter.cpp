@@ -7,14 +7,13 @@
 
 #include "ServiceManagerAdapter.hpp"
 
-
 ServiceManagerAdapter::ServiceManagerAdapter(std::shared_ptr<vsomeip::application> app, const std::vector<serviceIdAndCallBack> &servicesIdsCallbacks)
     : m_app_{app},
-        m_is_registered_{false},
-        m_blocked_{false},
-        m_running_{true},
-        m_serviceIdCallbacks{servicesIdsCallbacks},
-        m_offer_thread_{std::bind(&ServiceManagerAdapter::run, this)}
+      m_is_registered_{false},
+      m_blocked_{false},
+      m_running_{true},
+      m_serviceIdCallbacks{servicesIdsCallbacks},
+      m_offer_thread_{std::bind(&ServiceManagerAdapter::run, this)}
 {
 }
 
@@ -26,10 +25,10 @@ void ServiceManagerAdapter::start()
 bool ServiceManagerAdapter::init()
 {
     std::lock_guard<std::mutex> lock(m_mutex_);
-
+    
     m_app_->register_state_handler(
         std::bind(&ServiceManagerAdapter::onState, this,
-                    std::placeholders::_1));
+                  std::placeholders::_1));
 
     for (auto service : m_serviceIdCallbacks)
     {
@@ -66,8 +65,8 @@ void ServiceManagerAdapter::offerServices()
 void ServiceManagerAdapter::onState(vsomeip::state_type_e state)
 {
     std::cout << "Application " << m_app_->get_name() << " is "
-                << (state == vsomeip::state_type_e::ST_REGISTERED ? "registered." : "deregistered.")
-                << std::endl;
+              << (state == vsomeip::state_type_e::ST_REGISTERED ? "registered." : "deregistered.")
+              << std::endl;
 
     if (state == vsomeip::state_type_e::ST_REGISTERED)
     {
@@ -83,4 +82,3 @@ void ServiceManagerAdapter::onState(vsomeip::state_type_e state)
         m_is_registered_ = false;
     }
 }
-

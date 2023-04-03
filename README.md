@@ -2,7 +2,7 @@
 
 ## step0 : create a custom bridge network
 ```
-sudo docker network create --subnet=172.18.0.0/16 vsomeip_bridge
+$ sudo docker network create --subnet=172.18.0.0/16 vsomeip_bridge
 ```
 
 ## step1 : setup boost image

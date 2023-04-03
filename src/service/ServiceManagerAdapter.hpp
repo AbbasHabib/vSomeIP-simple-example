@@ -26,7 +26,6 @@ private:
     void run();
     void offerServices();
     void onState(vsomeip::state_type_e state);
-
     std::shared_ptr<vsomeip::application> m_app_;
     bool m_is_registered_;
     std::mutex m_mutex_;
